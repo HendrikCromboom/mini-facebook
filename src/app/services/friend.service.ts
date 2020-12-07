@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Friend } from '../model/friend';
 
 @Injectable({
@@ -6,7 +8,7 @@ import { Friend } from '../model/friend';
 })
 export class FriendService {
 
-constructor() { }
+constructor(private http: HttpClient) { }
 
 addUser(friend: Friend){
   let friends = [];
@@ -18,6 +20,10 @@ addUser(friend: Friend){
   }
   localStorage.setItem('Friends', JSON.stringify(friends));
 
+}
+
+getAllFriends(): Observable<string[]>{
+  return this.http.get<string[]>('http://localhost:5000/api/friend');
 }
 
 }

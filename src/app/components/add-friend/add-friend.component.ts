@@ -20,6 +20,9 @@ export class AddFriendComponent implements OnInit {
   ngOnInit(): void {
 
    this.createRegistrationForm();
+   this.friendService.getAllFriends().subscribe(data => {
+     console.log(data);
+   })
   }
 
   createRegistrationForm(){
