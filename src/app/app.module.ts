@@ -10,6 +10,7 @@ import { NavBarComponent } from './components/navbar/navbar.component';
 import { from } from 'rxjs';
 import { HomeComponent } from './components/home/home.component';
 import { AddFriendComponent } from './components/add-friend/add-friend.component';
+import { FriendService } from './services/friend.service';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -30,7 +31,8 @@ const appRoutes: Routes = [
     HttpClientModule
   ],
   providers: [
-    AlertifyService
+    AlertifyService,
+    FriendService
   ],
   bootstrap: [AppComponent]
 })

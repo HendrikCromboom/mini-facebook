@@ -1,31 +1,49 @@
+<div class="row">
+  <div class="col-6 m-auto">
+  <div class="card m-auto">
+    <div class="card-header">
+      Add Friend
+    </div>
+    <div class="card-body">
+      <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+        <div class="form-group col-12">
+            <label for="name" class="form-label">First Name</label>
+            <input type="text" class="form-control" formControlName="firstName">
+            <span *ngIf="!firstName.valid && (firstName.touched || userSubmitted)">Please provide a first name</span>
+        </div>
+        <div class="form-group col-12">
+          <label for="name" class="form-label">Last Name</label>
+          <input type="text" class="form-control" formControlName="lastName">
+          <span *ngIf="!lastName.valid && (lastName.touched || userSubmitted)">Please provide a last name</span>
+      </div>
 
-<div class="card">
-  <div class="card-header">
-    Add New Friend
+        <div class="form-group col-12">
+          <label for="email" class="form-label">Email</label>
+          <input type="text" class="form-control" formControlName="email">
+          <span *ngIf="!email.valid && (email.touched || userSubmitted)" class ="error-block">
+            <span *ngIf="email.hasError('required')">
+              Please provide an email
+            </span>
+            <span *ngIf="email.hasError('email')">
+              Please provide a valid email
+            </span>
+          </span>
+        </div>
+        <div class="form-group col-12">
+          <label for="mobile" class="form-label">Mobile</label>
+          <input type="text" class="form-control" formControlName="mobile">
+        </div>
+        <div class="form-group col-12">
+          <label for="mobile" class="form-label">Favorite Language</label>
+          <input type="text" class="form-control" formControlName="favLang">
+        </div>
+
+        <div class="form-group col-12">
+          <button type="submit" class="btn btn-primary">Save</button>
+          <button type="reset" class="btn btn-secondary ml-2">Cancel</button>
+        </div>
+      </form>
+    </div>
   </div>
-  <div class="card-body">
-    <form (ngSubmit)='onSubmit()' #Form='ngForm'>
-      <div class="form-group col-12">
-        <label for="name">First Name</label>
-        <input type="text" class="form-control" #propFirstName="ngModel" ngModel name="FirstName" required minlength="5">
-        <span *ngIf="!propFirstName.valid && propFirstName.touched" class="error-block">
-          <span *ngIf="propFirstName.errors.required">Please provide a First Name</span>
-          <span *ngIf="propFirstName.errors.minlength">Name must be at least 5 characters</span>
-
-        </span>
-      </div>
-      <div class="form-group col-12">
-        <label for="name">Last Name</label>
-        <input type="text" class="form-control" #propLastName="ngModel" ngModel name="LastName" required minlength="5">
-        <span *ngIf="!propLastName.valid && propLastName.touched" class="error-block">
-          <span *ngIf="propLastName.errors.required">Please provide a Last Name</span>
-          <span *ngIf="propLastName.errors.minlength">Name must be at least 5 characters</span>
-        </span>
-      </div>
-      <div class="form-group col-12">
-        <button [disabled]='!Form.valid' type="submit" class="btn btn-primary mr-2">Save</button>
-        <button type="reset" class="btn btn-primary">Cancel</button>
-      </div>
-    </form>
   </div>
 </div>
