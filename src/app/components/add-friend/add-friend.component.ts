@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-add-friend',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddFriendComponent implements OnInit {
 
-  constructor() { }
+  @ViewChild('Form') addFriendForm:NgForm;
+
+  constructor(private router: Router) { }
 
   ngOnInit() {
+  }
+
+  onBack(){
+    this.router.navigate(['/']);
+  }
+
+  onSubmit(){
+    console.log(this.addFriendForm)
   }
 
 }
